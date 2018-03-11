@@ -30,10 +30,9 @@ Things you may want to cover:
 |nickname|string|null: false, index|
 |email|string|null: false|
 |password|string|null: false|
-|member_id|integer|null: false, foreign_key: true|
 
 ### Association
-- has_many :message
+- has_many :messages
 - has_many :groups, through: :members
 
 ## membersテーブル
@@ -51,18 +50,16 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false, index|
-|member_id|integer|null: false, foreign_key: true|
+|name|string|null: false|
 
 ### Association
-- belongs_to :group
-- belongs_to :user
+- has_many :users, through: :members
 
 ## messagesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|body|text|index|
+|body|text||
 |image|string||
 |group_id|integer|null: false, foreign_key: true|
 |user_id|integer|null: false, foreign_key: true|
