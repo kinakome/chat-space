@@ -1,0 +1,14 @@
+$left-color: #2f3e51;
+$group-color: #FFFFFF;
+$left-width: 300px;
+@mixin length-center() {
+  display: flex;
+  align-items: center;
+}
+
+.font-awesome{
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+}
