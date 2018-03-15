@@ -1,0 +1,123 @@
+#contents {
+height: 100%;
+width: 100%;
+
+}
+
+#left-content {
+  width: $left-width;
+  height: 100vh;
+  background-color: $left-color;
+  color: $group-color;
+  float: left;
+
+    &__setting {
+      height: 100px;
+      background-color: #253141;
+      font-size: 16px;
+      font-weight: bold;
+      @include length-center();
+        .nickname {
+          padding: 0px 20px;
+        }
+        &__icons{
+          padding-left: 120px;
+        }
+    }
+    &__group {
+      background-color: $left-color;
+        .title {
+          padding: 20px 20px 5px;
+          font-size: 15px;
+        }
+        .new-message {
+          padding: 0px 20px 20px;
+          font-size: 11px;
+        }
+    }
+}
+
+#right-content{
+  height: 100vh;
+  width: calc(100vw - 300px);
+  float: right;
+
+  &__detail{
+    height: 100px;
+    border-bottom: solid 1px #eeeeee;
+    &__title {
+      font-size: 20px;
+      color: #333333;
+      padding: 35px 40px 15px;
+      float: left;
+    }
+    &__edit{
+      float: right;
+      color: #38AEF0;
+      border: solid 2px #38AEF0;
+      font-size: 16px;
+      padding: 10px 20px;
+      margin-top: 28px;
+      margin-right:40px;
+      text-decoration: none;
+
+    }
+    &__member {
+      font-size: 12px;
+      color: #999999;
+      padding: 0px 40px;
+      clear: both;
+    }
+  }
+  &__main{
+
+      height: calc(100% - 100px - 90px - 46px);
+      background-color: #AAAAAA;
+      padding-top: 46px;
+    &__template{
+      padding-left: 40px;
+        &__nickname{
+          font-size: 16px;
+          font-weight: bold;
+          color: #434A54;
+          float: left;
+          padding-right: 10px;
+        }
+        &__date{
+          font-size: 12px;
+          color: #999999;
+
+        }
+        &__sentence{
+          color: #434A54;
+          font-size: 14px;
+          clear: both;
+          padding-top: 10px;
+        }
+    }
+  }
+  &__send{
+    background-color: #e4e4e4;
+    height: 90px;
+
+
+    &__area{
+      width: calc(100vw - 40px - 300px - 155px);
+      margin: 20px 0px 20px 40px;
+      height: 50px;
+    }
+    &__photo{
+      position: absolute;
+      right: 165px;
+      bottom: 30px;
+    }
+    &__button{
+        float: right;
+        color: #fff;
+        background-color: #38AEF0;
+        height: 50px;
+        width: 100px;
+        margin: 20px 40px 20px 0px;
+    }
+  }
+}

@@ -1,0 +1,8 @@
+$left-color: #2f3e51;
+$group-color: #FFFFFF;
+$left-width: 300px;
+@mixin length-center() {
+  display: flex;
+  align-items: center;
+}
+
