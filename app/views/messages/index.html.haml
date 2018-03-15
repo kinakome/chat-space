@@ -21,7 +21,7 @@
 
     #right-content__detail
       #right-content__detail__title sampleグループ
-      %a#right-content__detail__edit{ :href => "リンク" } Edit
+      %a#right-content__detail__edit{ href: :リンク } Edit
       #right-content__detail__member Members: matsuoka
 
     #right-content__main
@@ -39,11 +39,10 @@
 
 
     #right-content__send
-      %input.font-awesome#right-content__send__area{ :type => "text", :placeholder => "　type a message"}
+      %input.font-awesome#right-content__send__area{ type: :text, placeholder: "　type a message"}
       #right-content__send__photo
-        / %labe{:for => "file_photo"}
-        /   %i.fa.fa-image
-        /   %input#file_photo{:style => "display:none;", :type => "file"}
-      / 画像アイコンをテキストエリアに埋め込めませんでした...
+        %labe{:for => "file_photo"}
+          %i.fa.fa-image
+          %input#file_photo{:style => "display:none;", :type => "file"}
 
-      %input#right-content__send__button{ :type => "submit", :value => "Send" }
+      %input#right-content__send__button{ type: :submit, value: :Send }
