@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
   root 'messages#index'
+  devise_for :users
   resources :messages
   resource :users, only: [:edit, :update]
 end
