@@ -5,10 +5,15 @@
   #left-content
 
     #left-content__setting
-      %span.nickname matsuoka
+      %span.nickname
+        = current_user.name
+
       #left-content__setting__icons
+      = link_to edit_users_path(current_user) do
         %i.fa.fa-cog
+      = link_to  do
         %i.fa.fa-pencil-square-o
+
     #left-content__group
 
       %p.title テンプレート１

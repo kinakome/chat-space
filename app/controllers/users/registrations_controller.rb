@@ -1,5 +1,4 @@
-class UsersController < ApplicationController
-
+class Users::RegistrationsController < Devise::RegistrationsController
   def edit
   end
 
