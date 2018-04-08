@@ -14,6 +14,7 @@ class MessagesController < ApplicationController
         format.json
       end
     else
+      @messages = @group.messages.includes(:user)
       render :index
     # if @message.save
     #   redirect_to group_messages_path(@group), notice: 'メッセージが送信されました'

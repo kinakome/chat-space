@@ -4,11 +4,11 @@ $(function(){
 	   					<div class="upper-message">
 	   						<div class="upper-message__user-name">
 	    					${message.user_name}
-	    				</div>
-	    				<div class="upper-message__date">
+	    					</div>
+	    					<div class="upper-message__date">
 	    					${message.created_at}
+	    					</div>
 	    				</div>
-	    			</div>
 	   					<div class="lower-meesage">
 	    					<p class="lower-message__content">
 	    						${message.content}
@@ -22,6 +22,7 @@ $(function(){
 	e.preventDefault();
 	var formData = new FormData(this);
 	var url = $(this).attr('action')
+
 		$.ajax({
 		url: url,
 		type: 'POST',
@@ -33,7 +34,7 @@ $(function(){
     .done(function(data){
     	var html = buildHTML(data);
       	$('.messages').append(html).animate({scrollTop: $('.messages')[0].scrollHeight}, '500');
-     	$('.form__message').val('');
+     	$('#new_message')[0].reset();
     })
     .fail(function() {
       alert('メッセージが入力されていません');
