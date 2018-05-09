@@ -4,13 +4,14 @@
     .header
       .left-header
         .left-header__title
-          サンプル１
+          =@group.name
           .left-header__members
             %p.left-header__member
-              Members: matsuoka
+              Members:
+
       .right-header
         .right-header_button
-          = link_to edit_group_path(current_user) do
+          = link_to edit_group_path(@group.id) do
             Edit
 
     .messages
