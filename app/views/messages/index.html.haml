@@ -4,13 +4,17 @@
     .header
       .left-header
         .left-header__title
-          サンプル１
+          =@group.name
           .left-header__members
-            %p.left-header__member
-              Members: matsuoka
+        %ul.left-header__members
+          Members :
+          - @group.users.each do |user|
+            %li.menber
+              = user.name
+
       .right-header
         .right-header_button
-          = link_to edit_group_path(current_user) do
+          = link_to edit_group_path(@group.id) do
             Edit
 
     .messages
