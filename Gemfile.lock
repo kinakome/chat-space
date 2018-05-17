@@ -47,6 +47,7 @@ GEM
       debug_inspector (>= 0.0.1)
     builder (3.2.3)
     byebug (10.0.2)
+    cap (0.1.4)
     capistrano (3.10.2)
       airbrussh (>= 1.0.0)
       i18n
@@ -453,6 +454,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
+  cap
   capistrano
   capistrano-bundler
   capistrano-rails
