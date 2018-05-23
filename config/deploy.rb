@@ -46,13 +46,6 @@ namespace :deploy do
   before :starting, 'deploy:upload'
   after :finishing, 'deploy:cleanup'
 end
-
-after 'deploy:publishing', 'deploy:restart'
-namespace :deploy do
-  task :restart do
-  invoke 'unicorn:restart'
-  end
-end
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
