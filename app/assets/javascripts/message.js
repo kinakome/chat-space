@@ -26,10 +26,13 @@ $(document).on('turbolinks:load', function() {
 		    }
 
 		$('#new_message').on('submit', function(e){
+		//フォームの送信ボタンを押す
 		e.preventDefault();
+		//フォームの送信を止める
 		var formData = new FormData(this);
+		//押されたDOM要素に入っているデータを変数に入れる
 		var url = $(this).attr('action')
-
+		//イベントが発生した要素のアクション属性を取得（今回はフォーム送信先URL）
 			$.ajax({
 			url: url,
 			type: 'POST',
@@ -39,10 +42,14 @@ $(document).on('turbolinks:load', function() {
 			contentType: false
 			})
 		    .done(function(data){
+		    //非同期通信成功時
 		    	var html = buildHTML(data);
 		      	$('.messages').append(html).animate({scrollTop: $('.messages')[0].scrollHeight}, '500');
+		      	//.messagesに作成されたhtmlを追加、animateでスクロールさせる
 		     	$('#new_message')[0].reset();
+		     	//ボタンをリセット[0]は必須
 		     	$('input').prop('disabled', false);
+		     	//ボタンが押された後disabledになるのでfalseでそれを取り消す
 		    })
 		    .fail(function() {
 		      alert('メッセージが入力されていません');
@@ -50,11 +57,14 @@ $(document).on('turbolinks:load', function() {
 		});
 
 		    var interval = setInterval(autoUpdate, 5000);
+		    //5秒おきに発火
 			    function autoUpdate() {
 			      	if (window.location.href.match(/\/groups\/\d+\/messages/)) {
-			      		var message_id = $('.message:last').last().data('message-id');
+			      		//今のURL（window.location.href）が一致している時
+			      		var message_id = $('.message').last().data('message-id');
+			      		//メッセージの最後のid
 					    $.ajax({
-					      	url: location.href.json,
+					      	url: location.href,
 					      	dataType: 'json',
 					      	type: 'GET',
 					      	data: {
@@ -62,13 +72,12 @@ $(document).on('turbolinks:load', function() {
 		      						}
 					    })
 					    .done(function(data) {
-					      	var id = $('.message').data('messageId');
-					      	var insertHTML = '';
-					     	data.forEach(function(message) {
-						          	insertHTML += buildHTML(message);
-					      	});
-					      	$('.messages').append(insertHTML);
-					    })
+							if(data != null){
+          						data.forEach(function(message){
+            					$('.messages').append(buildHTML(message));
+          						});
+        					}
+      					})
 					    .fail(function(data) {
 					      	console.log('自動更新に失敗しました');
 					    })
@@ -77,4 +86,5 @@ $(document).on('turbolinks:load', function() {
 	   				}
 	   			}
 	});
+
 });
