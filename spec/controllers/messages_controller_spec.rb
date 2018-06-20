@@ -1,30 +1,35 @@
 require 'rails_helper'
 
 describe MessagesController do
+  #let(モデル){create(モデル)}でインスタンスを定義
   let(:group) { create(:group) }
   let(:user) { create(:user) }
-
+  #indexアクションのテスト
   describe '#index' do
-
+    #ログイン時のテスト
     context 'log in' do
       before do
         login user
+        #httpメソッド:アクション、indexアクションをexample内で呼んでる
         get :index, params: { group_id: group.id }
       end
 
       it 'assigns @message' do
+        #be_a_newは指定したクラスのインスタンスで、まだ登録されていない時に通るマッチャー
         expect(assigns(:message)).to be_a_new(Message)
       end
 
       it 'assigns @group' do
+        #assignsはアクション内のインスタンス変数を@無しで()内に指定すると内容を取り出す
         expect(assigns(:group)).to eq group
       end
 
       it 'redners index' do
+        #responseはexample内のリクエストによる遷移先のビュー、templateは後述アクションに対応するビュー
         expect(response).to render_template :index
       end
     end
-
+    #ログインしていない時のテスト
     context 'not log in' do
       before do
         get :index, params: { group_id: group.id }

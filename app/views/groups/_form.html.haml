@@ -1,6 +1,8 @@
 = form_for @group do |f|
+  -#groupにエラーがあるなら
   - if group.errors.any?
     .chat-group-form__errors
+    -#エラーメッセージはerrors.full_messages内に格納される
       %h2= "#{group.errors.full_messages.count}件のエラーが発生しました。"
       %ul
         - group.errors.full_messages.each do |message|
@@ -27,6 +29,7 @@
       #chat-group-users
       - @group.users.each do |user|
         .chat-group-user.clearfix{ id: "chat-group-user-#{current_user.id}"}
+        -# group[user_ids][]はgroupのインスタンスにuser_idsというカラムがないのでgroup[名前]で作ってparamsに入れる,キー名[]で配列の形で保存
           %input{name: "group[user_ids][]", type: "hidden", value: "#{current_user.id}"}
           %p.chat-group-user__name
             = user.name

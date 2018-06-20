@@ -31,7 +31,7 @@ $(document).on('turbolinks:load', function() {
 		//フォームの送信を止める
 		var formData = new FormData(this);
 		//押されたDOM要素に入っているデータを変数に入れる
-		var url = $(this).attr('action')
+		var url = $(this).attr('action');
 		//イベントが発生した要素のアクション属性を取得（今回はフォーム送信先URL）
 			$.ajax({
 			url: url,
@@ -59,10 +59,11 @@ $(document).on('turbolinks:load', function() {
 		    var interval = setInterval(autoUpdate, 5000);
 		    //5秒おきに発火
 			    function autoUpdate() {
-			      	if (window.location.href.match(/\/groups\/\d+\/messages/)) {
+			      	if (location.href.match(/\/groups\/\d+\/messages/)) {
 			      		//今のURL（window.location.href）が一致している時
-			      		var message_id = $('.message').last().data('message-id');
+			      		var message_id = $('.message').last().data('messageId');
 			      		//メッセージの最後のid
+			      		console.log(message_id);
 					    $.ajax({
 					      	url: location.href,
 					      	dataType: 'json',

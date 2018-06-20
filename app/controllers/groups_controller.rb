@@ -4,6 +4,7 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
+    #グループ新規作成時に作成者をそのグループに入れる
     @group.users << current_user
   end
 
@@ -12,6 +13,7 @@ class GroupsController < ApplicationController
     if @group.save
       redirect_to root_path, notice: 'グループを作成しました'
     else
+      #グループ作成に失敗した時はnewアクションに飛ぶ
       render :new
     end
   end
@@ -32,6 +34,7 @@ class GroupsController < ApplicationController
   private
 
   def group_params
+    #group[user_ids][]でフォームから送られてきたものを配列に入れている
     params.require(:group).permit(:name, { :user_ids => [] })
   end
 
